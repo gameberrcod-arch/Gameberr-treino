@@ -8,85 +8,67 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
 
-<meta name="theme-color" content="#111722">
+<meta name="theme-color" content="#101010">
 
-<meta name="apple-mobile-web-app-capable" content="yes">
-
-<meta name="apple-mobile-web-app-title" content="Treino Sem Impacto">
-
-<title>Treino Sem Impacto</title>
+<title>Gameberr Treino</title>
 
 <style>
 
-:root{color-scheme:dark;--card:#1c2635;--line:#354155;--txt:#f6f7fb;--muted:#b5bfd0;--green:#b7f36b}
+:root{color-scheme:dark;--bg:#101010;--card:#1d1d1d;--green:#a5ff35;--muted:#aaa}
 
 *{box-sizing:border-box}
 
-body{margin:0;padding:env(safe-area-inset-top) 15px 30px;background:linear-gradient(#223147,#111722 350px);color:var(--txt);font:16px/1.45 -apple-system,BlinkMacSystemFont,sans-serif}
+body{margin:0;background:var(--bg);color:white;font-family:-apple-system,BlinkMacSystemFont,Arial,sans-serif;padding:20px 16px 40px}
 
-main{max-width:600px;margin:auto}
+main{max-width:560px;margin:auto}
 
-header{padding:25px 4px 12px}
+h1{font-size:30px;margin:8px 0;color:var(--green)}
 
-small,.muted{color:var(--muted)}
+h2{font-size:19px;margin:0 0 14px}
 
-.eyebrow{color:var(--green);font-size:12px;font-weight:800;letter-spacing:2px}
+p{line-height:1.45}
 
-h1{font-size:35px;line-height:1.02;margin:9px 0}
+.sub{color:var(--muted);margin-top:0}
 
-h2{font-size:19px;margin:0 0 12px}
+.card{background:var(--card);padding:18px;border-radius:18px;margin:16px 0}
 
-.card{background:var(--card);border:1px solid var(--line);border-radius:19px;padding:17px;margin:12px 0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stat{background:#292929;padding:14px;border-radius:12px}
 
-.stat{background:#2a374b;border-radius:12px;text-align:center;padding:12px 4px}
+.big{font-size:27px;font-weight:800;color:var(--green)}
 
-.stat strong{display:block;font-size:22px}
+.small{font-size:12px;color:var(--muted)}
 
-.stat span{font-size:11px;color:var(--muted)}
+label{display:block;font-size:13px;color:#ddd;margin:12px 0 6px}
 
-.row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+input,select{width:100%;background:#303030;color:white;border:1px solid #484848;border-radius:10px;padding:12px;font-size:16px}
 
-.pill{font-size:12px;color:var(--green)}
+button{border:0;border-radius:12px;padding:14px;font-weight:750;font-size:15px;cursor:pointer}
 
-.exercise{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.primary{background:var(--green);color:#111;width:100%}
 
-.exercise:last-child{border:0}
+.secondary{background:#393939;color:white}
 
-.num{background:#354155;color:var(--green);border-radius:10px;width:32px;height:32px;display:grid;place-items:center;flex-shrink:0;font-weight:bold}
+.buttons{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}
 
-.exercise h3{font-size:15px;margin:0}
+.exercise{padding:13px;background:#292929;border-radius:12px;margin:8px 0}
 
-.exercise p{font-size:12px;color:var(--muted);margin:4px 0 0}
+.exercise strong{color:var(--green)}
 
-.btn{display:block;width:100%;padding:14px;margin-top:9px;border:0;border-radius:13px;background:var(--green);color:#18210f;font-size:15px;font-weight:800}
+.timer{font-size:52px;font-weight:850;text-align:center;margin:12px 0;color:var(--green);font-variant-numeric:tabular-nums}
 
-.secondary{background:#2a374b;color:var(--txt);border:1px solid var(--line)}
+.center{text-align:center}
 
-.smallbtn{width:auto;margin:0;padding:11px 15px}
+.muted{color:var(--muted);font-size:13px}
 
-.progress{height:7px;background:#354155;border-radius:10px;overflow:hidden;margin:13px 0}
+.history-item{border-bottom:1px solid #383838;padding:12px 0}
 
-.progress div{height:100%;background:var(--green);width:0%}
+.history-item:last-child{border:0}
 
-.timer{text-align:center;padding:20px 0}
-
-.timername{font-size:20px;font-weight:800}
-
-.clock{font-size:58px;font-weight:900;letter-spacing:-2px}
-
-.hidden{display:none!important}
-
-select{width:100%;padding:13px;border-radius:12px;background:#2a374b;color:white;border:1px solid var(--line);font-size:16px}
-
-.note{font-size:13px;background:#2a374b;border-left:3px solid var(--green);padding:12px;border-radius:0 10px 10px 0}
-
-.historyitem{padding:10px 0;border-bottom:1px solid var(--line)}
-
-footer{text-align:center;color:var(--muted);font-size:12px;padding:18px}
+a{color:var(--green)}
 
 </style>
 
@@ -98,445 +80,501 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:18px}
 
 <header>
 
-<div class="eyebrow">TREINO EM CASA • SEM SALTOS</div>
+  <h1>🔥 Gameberr Treino</h1>
 
-<h1>Treino Sem<br>Impacto</h1>
-
-<p class="muted">Movimente-se no seu ritmo. Comece leve e evolua aos poucos.</p>
+  <p class="sub">Treine no seu ritmo. Evolua um dia de cada vez.</p>
 
 </header>
 
 <section class="card">
 
-<div class="stats">
+<h2>Seu perfil</h2>
 
-<div class="stat"><strong id="sessions">0</strong><span>treinos</span></div>
+<div class="grid">
 
-<div class="stat"><strong id="minutes">0</strong><span>minutos</span></div>
+<div>
 
-<div class="stat"><strong id="streak">0</strong><span>dias seguidos</span></div>
+<label for="weight">Peso (kg)</label>
 
-</div>
-
-</section>
-
-<section class="card" id="home">
-
-<div class="row"><h2>Seu treino</h2><span class="pill">Baixo impacto</span></div>
-
-<p class="muted">Movimentos sem peso, com pausas para recuperar o fôlego.</p>
-
-<div id="exerciseList"></div>
-
-<div class="progress"><div id="homeProgress"></div></div>
-
-<button class="btn" id="start">Começar treino</button>
-
-<button class="btn secondary" id="settingsButton">Alterar duração</button>
-
-</section>
-
-<section class="card hidden" id="workout">
-
-<div class="row"><h2>Em andamento</h2><span class="pill" id="step"></span></div>
-
-<div class="timer">
-
-<div class="timername" id="exerciseName"></div>
-
-<div class="clock" id="clock">01:00</div>
-
-<p class="muted" id="tip"></p>
+<input id="weight" type="number" min="30" max="300" value="145">
 
 </div>
 
-<div class="progress"><div id="progress"></div></div>
+<div>
 
-<div class="row">
+<label for="height">Altura (cm)</label>
 
-<button class="btn secondary smallbtn" id="pause">Pausar</button>
-
-<button class="btn smallbtn" id="next">Próximo</button>
+<input id="height" type="number" min="100" max="230" value="180">
 
 </div>
 
-<button class="btn secondary" id="end">Encerrar treino</button>
+</div>
+
+<p class="muted">Os dados ficam salvos neste aparelho.</p>
+
+<button class="secondary" id="saveProfile">Salvar perfil</button>
 
 </section>
 
-<section class="card hidden" id="settings">
+<section class="card">
 
-<h2>Duração da sessão</h2>
+<h2>📊 Seu treino</h2>
 
-<p class="muted">Escolha um tempo confortável para você.</p>
+<div class="grid">
+
+<div class="stat">
+
+<div class="small">Calorias estimadas</div>
+
+<div class="big" id="calories">0 kcal</div>
+
+</div>
+
+<div class="stat">
+
+<div class="small">Tempo de exercício</div>
+
+<div class="big" id="elapsed">00:00</div>
+
+</div>
+
+</div>
+
+<label for="duration">Duração do treino</label>
 
 <select id="duration">
 
-<option value="8">8 minutos — bem leve</option>
+<option value="8">8 minutos</option>
 
-<option value="12">12 minutos — inicial</option>
+<option value="12" selected>12 minutos</option>
 
-<option value="16">16 minutos — moderado</option>
+<option value="16">16 minutos</option>
 
-<option value="20">20 minutos — mais longo</option>
+<option value="20">20 minutos</option>
+
+<option value="30">30 minutos</option>
 
 </select>
 
-<button class="btn" id="saveSettings">Salvar</button>
+<label for="intensity">Intensidade real do treino</label>
 
-<button class="btn secondary" id="cancelSettings">Voltar</button>
+<select id="intensity">
+
+<option value="2.8">Leve — consigo conversar facilmente</option>
+
+<option value="3.8" selected>Moderada — respiro mais rápido</option>
+
+<option value="5">Alta — esforço intenso</option>
+
+</select>
+
+<p class="muted">A estimativa usa peso, tempo e intensidade selecionada. Altura é registrada no perfil, mas não entra diretamente nesta fórmula.</p>
+
+</section>
+
+<section class="card center">
+
+<h2>🥊 Treino guiado</h2>
+
+<div class="timer" id="timer">12:00</div>
+
+<p id="currentExercise">Prepare-se para começar!</p>
+
+<p class="muted" id="status">Escolha a duração e toque em iniciar.</p>
+
+<button class="primary" id="start">▶ Iniciar treino</button>
+
+<div class="buttons">
+
+<button class="secondary" id="pause">⏸ Pausar</button>
+
+<button class="secondary" id="reset">↻ Reiniciar</button>
+
+</div>
+
+<button class="secondary" id="finish" style="width:100%;margin-top:10px">✓ Finalizar e salvar</button>
 
 </section>
 
 <section class="card">
 
-<h2>Histórico de treinos</h2>
+<h2>💥 Exercícios sem saltos</h2>
+
+<div class="exercise"><strong>1. Socos retos</strong><br>Alterne os braços em um ritmo confortável.</div>
+
+<div class="exercise"><strong>2. Ganchos</strong><br>Gire o tronco suavemente, sem forçar as articulações.</div>
+
+<div class="exercise"><strong>3. Lenhador sem peso</strong><br>Faça o movimento diagonal de forma controlada.</div>
+
+<div class="exercise"><strong>4. Socos combinados</strong><br>Alterne socos retos e ganchos, mantendo os pés no chão.</div>
+
+<div class="exercise"><strong>5. Recuperação ativa</strong><br>Marche devagar no lugar ou movimente os braços suavemente.</div>
+
+<p class="muted">Alterne os exercícios durante o treino e descanse sempre que precisar.</p>
+
+</section>
+
+<section class="card">
+
+<h2>🏆 Histórico</h2>
+
+<div class="grid">
+
+<div class="stat">
+
+<div class="small">Treinos concluídos</div>
+
+<div class="big" id="totalSessions">0</div>
+
+</div>
+
+<div class="stat">
+
+<div class="small">Calorias acumuladas</div>
+
+<div class="big" id="totalCalories">0</div>
+
+</div>
+
+</div>
 
 <div id="history"><p class="muted">Seus treinos concluídos aparecerão aqui.</p></div>
 
-<button class="btn secondary" id="clearHistory">Apagar histórico</button>
+<button class="secondary" id="clearHistory">Apagar histórico</button>
 
 </section>
 
-<section class="card">
-
-<h2>Cuide do seu corpo</h2>
-
-<div class="note">Mantenha os pés no chão. Dê socos controlados, sem travar os cotovelos. No lenhador, faça uma rotação pequena e confortável do tronco. Descanse sempre que precisar.</div>
-
-<p class="muted">Pare se sentir dor, tontura, dor no peito ou falta de ar incomum. Calorias variam conforme a pessoa e a intensidade: este app não mede nem garante 300 kcal por sessão.</p>
-
-</section>
-
-<footer>Um passo de cada vez. Consistência vale mais do que pressa.</footer>
+<p class="muted center">As calorias são estimativas, não medições exatas. Comece leve e pare se sentir dor no peito, tontura ou falta de ar incomum. Em caso de sintomas importantes, procure atendimento.</p>
 
 </main>
 
 <script>
 
-const moves=[
+const $ = id => document.getElementById(id);
 
-["Marcha leve no lugar","Passos curtos e confortáveis."],
+const exercises = [
 
-["Socos retos alternados","Alterne os braços sem forçar os ombros."],
+"🥊 Socos retos",
 
-["Ganchos controlados","Cotovelos dobrados; movimento curto."],
+"🥊 Ganchos alternados",
 
-["Lenhador sem peso","Mãos juntas; gire suavemente o tronco."],
+"🪵 Lenhador sem peso",
 
-["Passos laterais","Um passo para cada lado, sem saltar."],
+"💥 Combinação de socos",
 
-["Socos leves","Alterne socos suaves e respiração tranquila."]
+"🌿 Recuperação ativa"
 
 ];
 
-let duration=Number(localStorage.getItem("tsi_duration")||12);
+let remaining = 720;
 
-let sequence=[],index=0,left=0,elapsed=0,total=0,running=false,interval=null;
+let elapsed = 0;
 
-const $=id=>document.getElementById(id);
+let running = false;
 
-function build(){
+let interval = null;
 
- sequence=[];
+let sessionSaved = false;
 
- const count=Math.max(4,Math.round(duration/1.5));
+let sessions = [];
 
- const work=Math.max(30,Math.floor(duration*60/count)-10);
+let currentDuration = 12;
 
- for(let i=0;i<count;i++){
+function readNumber(id, fallback) {
 
-  const m=moves[i%moves.length];
+  const value = Number($(id).value);
 
-  sequence.push({name:m[0],tip:m[1],seconds:work});
-
-  if(i<count-1)sequence.push({name:"Pausa e respiração",tip:"Descanse e retome quando estiver pronto.",seconds:10,rest:true});
-
- }
-
- total=sequence.reduce((sum,e)=>sum+e.seconds,0);
-
- $("duration").value=String(duration);
-
- renderList();
+  return Number.isFinite(value) && value > 0 ? value : fallback;
 
 }
 
-function renderList(){
+function loadData() {
 
- const list=$("exerciseList");
+  try {
 
- list.innerHTML="";
+    const profile = JSON.parse(localStorage.getItem("gb-profile") || "{}");
 
- let n=0;
+    if (profile.weight) $("weight").value = profile.weight;
 
- sequence.filter(e=>!e.rest).forEach(e=>{
+    if (profile.height) $("height").value = profile.height;
 
-  n++;
+    sessions = JSON.parse(localStorage.getItem("gb-sessions") || "[]");
 
-  const div=document.createElement("div");
+    if (!Array.isArray(sessions)) sessions = [];
 
-  div.className="exercise";
+  } catch(e) {
 
-  const number=document.createElement("div");
+    sessions = [];
 
-  number.className="num";
-
-  number.textContent=n;
-
-  const content=document.createElement("div");
-
-  const title=document.createElement("h3");
-
-  title.textContent=e.name;
-
-  const desc=document.createElement("p");
-
-  desc.textContent=e.tip;
-
-  content.append(title,desc);
-
-  div.append(number,content);
-
-  list.append(div);
-
- });
-
-}
-
-function getHistory(){
-
- try{return JSON.parse(localStorage.getItem("tsi_history")||"[]")}
-
- catch(e){return []}
-
-}
-
-function renderHistory(){
-
- const h=getHistory();
-
- $("sessions").textContent=h.length;
-
- $("minutes").textContent=h.reduce((sum,x)=>sum+x.minutes,0);
-
- const dates=new Set(h.map(x=>x.date));
-
- let streak=0;
-
- const d=new Date();
-
- const key=date=>date.getFullYear()+"-"+String(date.getMonth()+1).padStart(2,"0")+"-"+String(date.getDate()).padStart(2,"0");
-
- while(dates.has(key(d))){streak++;d.setDate(d.getDate()-1)}
-
- $("streak").textContent=streak;
-
- const box=$("history");
-
- if(!h.length){
-
-  box.innerHTML='<p class="muted">Seus treinos concluídos aparecerão aqui.</p>';
-
-  return;
-
- }
-
- box.innerHTML="";
-
- h.slice().reverse().slice(0,10).forEach(item=>{
-
-  const div=document.createElement("div");
-
-  div.className="historyitem";
-
-  const row=document.createElement("div");
-
-  row.className="row";
-
-  const strong=document.createElement("strong");
-
-  strong.textContent=item.minutes+" minutos concluídos";
-
-  const date=document.createElement("span");
-
-  date.className="pill";
-
-  date.textContent=new Date(item.date+"T12:00:00").toLocaleDateString("pt-BR");
-
-  row.append(strong,date);
-
-  div.append(row);
-
-  box.append(div);
-
- });
-
-}
-
-function show(id){
-
- ["home","workout","settings"].forEach(name=>$(name).classList.toggle("hidden",name!==id));
-
-}
-
-function formatTime(seconds){
-
- return String(Math.floor(seconds/60)).padStart(2,"0")+":"+String(seconds%60).padStart(2,"0");
-
-}
-
-function paint(){
-
- const e=sequence[index];
-
- $("exerciseName").textContent=e.name;
-
- $("tip").textContent=e.tip;
-
- $("clock").textContent=formatTime(left);
-
- $("step").textContent="Etapa "+(index+1)+" de "+sequence.length;
-
- $("next").textContent=index===sequence.length-1?"Concluir":"Próximo";
-
- $("progress").style.width=Math.min(100,elapsed/total*100)+"%";
-
-}
-
-function stopTimer(){
-
- if(interval)clearInterval(interval);
-
- interval=null;
-
- running=false;
-
- $("pause").textContent="Continuar";
-
-}
-
-function advance(){
-
- if(index>=sequence.length-1){finish();return}
-
- index++;
-
- left=sequence[index].seconds;
-
- paint();
-
-}
-
-function tick(){
-
- if(!running)return;
-
- left--;
-
- elapsed++;
-
- $("clock").textContent=formatTime(left);
-
- $("progress").style.width=Math.min(100,elapsed/total*100)+"%";
-
- if(left<=0)advance();
-
-}
-
-function startWorkout(){
-
- index=0;
-
- elapsed=0;
-
- left=sequence[0].seconds;
-
- running=true;
-
- show("workout");
-
- paint();
-
- $("pause").textContent="Pausar";
-
- if(interval)clearInterval(interval);
-
- interval=setInterval(tick,1000);
-
-}
-
-function finish(){
-
- stopTimer();
-
- const now=new Date();
-
- const date=now.getFullYear()+"-"+String(now.getMonth()+1).padStart(2,"0")+"-"+String(now.getDate()).padStart(2,"0");
-
- const h=getHistory();
-
- h.push({date,minutes:Math.max(1,Math.round(elapsed/60))});
-
- localStorage.setItem("tsi_history",JSON.stringify(h));
-
- renderHistory();
-
- $("homeProgress").style.width="100%";
-
- show("home");
-
- alert("Treino concluído! Parabéns por se movimentar.");
-
-}
-
-$("start").addEventListener("click",startWorkout);
-
-$("settingsButton").addEventListener("click",()=>show("settings"));
-
-$("saveSettings").addEventListener("click",()=>{
-
- duration=Number($("duration").value);
-
- localStorage.setItem("tsi_duration",String(duration));
-
- build();
-
- $("homeProgress").style.width="0%";
-
- show("home");
-
-});
-
-$("cancelSettings").addEventListener("click",()=>show("home"));
-
-$("pause").addEventListener("click",()=>{
-
- running=!running;
-
- $("pause").textContent=running?"Pausar":"Continuar";
-
-});
-
-$("next").addEventListener("click",advance);
-
-$("end").addEventListener("click",()=>{stopTimer();show("home")});
-
-$("clearHistory").addEventListener("click",()=>{
-
- if(confirm("Apagar o histórico deste aparelho?")){
-
-  localStorage.removeItem("tsi_history");
+  }
 
   renderHistory();
 
- }
+}
+
+function saveProfile() {
+
+  localStorage.setItem("gb-profile", JSON.stringify({
+
+    weight: readNumber("weight", 145),
+
+    height: readNumber("height", 180)
+
+  }));
+
+  updateDisplay();
+
+  $("status").textContent = "Perfil salvo neste aparelho.";
+
+}
+
+function estimateCalories(minutes) {
+
+  const weight = readNumber("weight", 145);
+
+  const met = Number($("intensity").value) || 2.8;
+
+  // Estimativa baseada no equivalente metabólico (MET).
+
+  return Math.max(0, met * 3.5 * weight / 200 * minutes);
+
+}
+
+function formatTime(seconds) {
+
+  const mins = Math.floor(Math.max(0, seconds) / 60);
+
+  const secs = Math.floor(Math.max(0, seconds) % 60);
+
+  return String(mins).padStart(2,"0") + ":" + String(secs).padStart(2,"0");
+
+}
+
+function updateDisplay() {
+
+  $("timer").textContent = formatTime(remaining);
+
+  $("elapsed").textContent = formatTime(elapsed);
+
+  $("calories").textContent = Math.round(estimateCalories(elapsed / 60)) + " kcal";
+
+  if (running) {
+
+    const exerciseIndex = Math.floor(elapsed / 45) % exercises.length;
+
+    $("currentExercise").textContent = exercises[exerciseIndex];
+
+  }
+
+}
+
+function stopClock() {
+
+  running = false;
+
+  if (interval !== null) clearInterval(interval);
+
+  interval = null;
+
+}
+
+function tick() {
+
+  if (!running) return;
+
+  if (remaining <= 0) {
+
+    stopClock();
+
+    $("status").textContent = "Tempo concluído! Finalize para salvar seu treino.";
+
+    $("currentExercise").textContent = "🎉 Parabéns por completar o tempo!";
+
+    updateDisplay();
+
+    return;
+
+  }
+
+  remaining--;
+
+  elapsed++;
+
+  updateDisplay();
+
+}
+
+function startWorkout() {
+
+  if (running) return;
+
+  if (sessionSaved || elapsed === 0 && remaining === 0) resetWorkout();
+
+  if (remaining <= 0) {
+
+    $("status").textContent = "Tempo concluído. Reinicie para começar de novo.";
+
+    return;
+
+  }
+
+  running = true;
+
+  sessionSaved = false;
+
+  $("status").textContent = "Treino em andamento. Respeite seu ritmo!";
+
+  interval = setInterval(tick, 1000);
+
+  updateDisplay();
+
+}
+
+function pauseWorkout() {
+
+  stopClock();
+
+  $("status").textContent = "Treino pausado. Descanse e retome quando estiver pronto.";
+
+}
+
+function resetWorkout() {
+
+  stopClock();
+
+  elapsed = 0;
+
+  currentDuration = Number($("duration").value) || 12;
+
+  remaining = currentDuration * 60;
+
+  sessionSaved = false;
+
+  $("status").textContent = "Pronto para começar.";
+
+  $("currentExercise").textContent = "Prepare-se para começar!";
+
+  updateDisplay();
+
+}
+
+function finishWorkout() {
+
+  stopClock();
+
+  if (elapsed < 1) {
+
+    $("status").textContent = "Faça pelo menos alguns segundos de treino antes de salvar.";
+
+    return;
+
+  }
+
+  if (sessionSaved) {
+
+    $("status").textContent = "Este treino já foi salvo.";
+
+    return;
+
+  }
+
+  const kcal = Math.round(estimateCalories(elapsed / 60));
+
+  sessions.unshift({
+
+    date: new Date().toLocaleString("pt-BR"),
+
+    seconds: elapsed,
+
+    kcal: kcal
+
+  });
+
+  sessions = sessions.slice(0, 100);
+
+  localStorage.setItem("gb-sessions", JSON.stringify(sessions));
+
+  sessionSaved = true;
+
+  renderHistory();
+
+  $("status").textContent = "Treino salvo! Você acumulou aproximadamente " + kcal + " kcal.";
+
+}
+
+function renderHistory() {
+
+  $("totalSessions").textContent = sessions.length;
+
+  $("totalCalories").textContent = sessions.reduce((sum, s) => sum + (Number(s.kcal) || 0), 0);
+
+  if (!sessions.length) {
+
+    $("history").innerHTML = '<p class="muted">Seus treinos concluídos aparecerão aqui.</p>';
+
+    return;
+
+  }
+
+  $("history").innerHTML = sessions.map(s =>
+
+    '<div class="history-item"><strong>' +
+
+    escapeHtml(s.date) +
+
+    '</strong><br><span class="muted">' +
+
+    formatTime(s.seconds) + ' de treino · ' +
+
+    Number(s.kcal) + ' kcal estimadas</span></div>'
+
+  ).join("");
+
+}
+
+function escapeHtml(value) {
+
+  return String(value).replace(/[&<>"']/g, c => ({
+
+    "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
+
+  }[c]));
+
+}
+
+$("saveProfile").addEventListener("click", saveProfile);
+
+$("start").addEventListener("click", startWorkout);
+
+$("pause").addEventListener("click", pauseWorkout);
+
+$("reset").addEventListener("click", resetWorkout);
+
+$("finish").addEventListener("click", finishWorkout);
+
+$("duration").addEventListener("change", resetWorkout);
+
+$("intensity").addEventListener("change", updateDisplay);
+
+$("weight").addEventListener("change", updateDisplay);
+
+$("clearHistory").addEventListener("click", () => {
+
+  if (confirm("Quer apagar todo o histórico de treinos deste aparelho?")) {
+
+    sessions = [];
+
+    localStorage.removeItem("gb-sessions");
+
+    renderHistory();
+
+  }
 
 });
 
-build();
+loadData();
 
-renderHistory();
+resetWorkout();
 
 </script>
 
