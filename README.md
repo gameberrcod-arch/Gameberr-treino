@@ -1,4 +1,3 @@
-# Gameberr-treino
 # Sem Impacto — protótipo iOS (SwiftUI)
 
 Este é um ponto de partida funcional em SwiftUI para um app de treino de baixo impacto.
