@@ -1,1 +1,545 @@
 
+
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<meta name="theme-color" content="#111722">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-title" content="Treino Sem Impacto">
+
+<title>Treino Sem Impacto</title>
+
+<style>
+
+:root{color-scheme:dark;--card:#1c2635;--line:#354155;--txt:#f6f7fb;--muted:#b5bfd0;--green:#b7f36b}
+
+*{box-sizing:border-box}
+
+body{margin:0;padding:env(safe-area-inset-top) 15px 30px;background:linear-gradient(#223147,#111722 350px);color:var(--txt);font:16px/1.45 -apple-system,BlinkMacSystemFont,sans-serif}
+
+main{max-width:600px;margin:auto}
+
+header{padding:25px 4px 12px}
+
+small,.muted{color:var(--muted)}
+
+.eyebrow{color:var(--green);font-size:12px;font-weight:800;letter-spacing:2px}
+
+h1{font-size:35px;line-height:1.02;margin:9px 0}
+
+h2{font-size:19px;margin:0 0 12px}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:19px;padding:17px;margin:12px 0}
+
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+
+.stat{background:#2a374b;border-radius:12px;text-align:center;padding:12px 4px}
+
+.stat strong{display:block;font-size:22px}
+
+.stat span{font-size:11px;color:var(--muted)}
+
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+
+.pill{font-size:12px;color:var(--green)}
+
+.exercise{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+
+.exercise:last-child{border:0}
+
+.num{background:#354155;color:var(--green);border-radius:10px;width:32px;height:32px;display:grid;place-items:center;flex-shrink:0;font-weight:bold}
+
+.exercise h3{font-size:15px;margin:0}
+
+.exercise p{font-size:12px;color:var(--muted);margin:4px 0 0}
+
+.btn{display:block;width:100%;padding:14px;margin-top:9px;border:0;border-radius:13px;background:var(--green);color:#18210f;font-size:15px;font-weight:800}
+
+.secondary{background:#2a374b;color:var(--txt);border:1px solid var(--line)}
+
+.smallbtn{width:auto;margin:0;padding:11px 15px}
+
+.progress{height:7px;background:#354155;border-radius:10px;overflow:hidden;margin:13px 0}
+
+.progress div{height:100%;background:var(--green);width:0%}
+
+.timer{text-align:center;padding:20px 0}
+
+.timername{font-size:20px;font-weight:800}
+
+.clock{font-size:58px;font-weight:900;letter-spacing:-2px}
+
+.hidden{display:none!important}
+
+select{width:100%;padding:13px;border-radius:12px;background:#2a374b;color:white;border:1px solid var(--line);font-size:16px}
+
+.note{font-size:13px;background:#2a374b;border-left:3px solid var(--green);padding:12px;border-radius:0 10px 10px 0}
+
+.historyitem{padding:10px 0;border-bottom:1px solid var(--line)}
+
+footer{text-align:center;color:var(--muted);font-size:12px;padding:18px}
+
+</style>
+
+</head>
+
+<body>
+
+<main>
+
+<header>
+
+<div class="eyebrow">TREINO EM CASA • SEM SALTOS</div>
+
+<h1>Treino Sem<br>Impacto</h1>
+
+<p class="muted">Movimente-se no seu ritmo. Comece leve e evolua aos poucos.</p>
+
+</header>
+
+<section class="card">
+
+<div class="stats">
+
+<div class="stat"><strong id="sessions">0</strong><span>treinos</span></div>
+
+<div class="stat"><strong id="minutes">0</strong><span>minutos</span></div>
+
+<div class="stat"><strong id="streak">0</strong><span>dias seguidos</span></div>
+
+</div>
+
+</section>
+
+<section class="card" id="home">
+
+<div class="row"><h2>Seu treino</h2><span class="pill">Baixo impacto</span></div>
+
+<p class="muted">Movimentos sem peso, com pausas para recuperar o fôlego.</p>
+
+<div id="exerciseList"></div>
+
+<div class="progress"><div id="homeProgress"></div></div>
+
+<button class="btn" id="start">Começar treino</button>
+
+<button class="btn secondary" id="settingsButton">Alterar duração</button>
+
+</section>
+
+<section class="card hidden" id="workout">
+
+<div class="row"><h2>Em andamento</h2><span class="pill" id="step"></span></div>
+
+<div class="timer">
+
+<div class="timername" id="exerciseName"></div>
+
+<div class="clock" id="clock">01:00</div>
+
+<p class="muted" id="tip"></p>
+
+</div>
+
+<div class="progress"><div id="progress"></div></div>
+
+<div class="row">
+
+<button class="btn secondary smallbtn" id="pause">Pausar</button>
+
+<button class="btn smallbtn" id="next">Próximo</button>
+
+</div>
+
+<button class="btn secondary" id="end">Encerrar treino</button>
+
+</section>
+
+<section class="card hidden" id="settings">
+
+<h2>Duração da sessão</h2>
+
+<p class="muted">Escolha um tempo confortável para você.</p>
+
+<select id="duration">
+
+<option value="8">8 minutos — bem leve</option>
+
+<option value="12">12 minutos — inicial</option>
+
+<option value="16">16 minutos — moderado</option>
+
+<option value="20">20 minutos — mais longo</option>
+
+</select>
+
+<button class="btn" id="saveSettings">Salvar</button>
+
+<button class="btn secondary" id="cancelSettings">Voltar</button>
+
+</section>
+
+<section class="card">
+
+<h2>Histórico de treinos</h2>
+
+<div id="history"><p class="muted">Seus treinos concluídos aparecerão aqui.</p></div>
+
+<button class="btn secondary" id="clearHistory">Apagar histórico</button>
+
+</section>
+
+<section class="card">
+
+<h2>Cuide do seu corpo</h2>
+
+<div class="note">Mantenha os pés no chão. Dê socos controlados, sem travar os cotovelos. No lenhador, faça uma rotação pequena e confortável do tronco. Descanse sempre que precisar.</div>
+
+<p class="muted">Pare se sentir dor, tontura, dor no peito ou falta de ar incomum. Calorias variam conforme a pessoa e a intensidade: este app não mede nem garante 300 kcal por sessão.</p>
+
+</section>
+
+<footer>Um passo de cada vez. Consistência vale mais do que pressa.</footer>
+
+</main>
+
+<script>
+
+const moves=[
+
+["Marcha leve no lugar","Passos curtos e confortáveis."],
+
+["Socos retos alternados","Alterne os braços sem forçar os ombros."],
+
+["Ganchos controlados","Cotovelos dobrados; movimento curto."],
+
+["Lenhador sem peso","Mãos juntas; gire suavemente o tronco."],
+
+["Passos laterais","Um passo para cada lado, sem saltar."],
+
+["Socos leves","Alterne socos suaves e respiração tranquila."]
+
+];
+
+let duration=Number(localStorage.getItem("tsi_duration")||12);
+
+let sequence=[],index=0,left=0,elapsed=0,total=0,running=false,interval=null;
+
+const $=id=>document.getElementById(id);
+
+function build(){
+
+ sequence=[];
+
+ const count=Math.max(4,Math.round(duration/1.5));
+
+ const work=Math.max(30,Math.floor(duration*60/count)-10);
+
+ for(let i=0;i<count;i++){
+
+  const m=moves[i%moves.length];
+
+  sequence.push({name:m[0],tip:m[1],seconds:work});
+
+  if(i<count-1)sequence.push({name:"Pausa e respiração",tip:"Descanse e retome quando estiver pronto.",seconds:10,rest:true});
+
+ }
+
+ total=sequence.reduce((sum,e)=>sum+e.seconds,0);
+
+ $("duration").value=String(duration);
+
+ renderList();
+
+}
+
+function renderList(){
+
+ const list=$("exerciseList");
+
+ list.innerHTML="";
+
+ let n=0;
+
+ sequence.filter(e=>!e.rest).forEach(e=>{
+
+  n++;
+
+  const div=document.createElement("div");
+
+  div.className="exercise";
+
+  const number=document.createElement("div");
+
+  number.className="num";
+
+  number.textContent=n;
+
+  const content=document.createElement("div");
+
+  const title=document.createElement("h3");
+
+  title.textContent=e.name;
+
+  const desc=document.createElement("p");
+
+  desc.textContent=e.tip;
+
+  content.append(title,desc);
+
+  div.append(number,content);
+
+  list.append(div);
+
+ });
+
+}
+
+function getHistory(){
+
+ try{return JSON.parse(localStorage.getItem("tsi_history")||"[]")}
+
+ catch(e){return []}
+
+}
+
+function renderHistory(){
+
+ const h=getHistory();
+
+ $("sessions").textContent=h.length;
+
+ $("minutes").textContent=h.reduce((sum,x)=>sum+x.minutes,0);
+
+ const dates=new Set(h.map(x=>x.date));
+
+ let streak=0;
+
+ const d=new Date();
+
+ const key=date=>date.getFullYear()+"-"+String(date.getMonth()+1).padStart(2,"0")+"-"+String(date.getDate()).padStart(2,"0");
+
+ while(dates.has(key(d))){streak++;d.setDate(d.getDate()-1)}
+
+ $("streak").textContent=streak;
+
+ const box=$("history");
+
+ if(!h.length){
+
+  box.innerHTML='<p class="muted">Seus treinos concluídos aparecerão aqui.</p>';
+
+  return;
+
+ }
+
+ box.innerHTML="";
+
+ h.slice().reverse().slice(0,10).forEach(item=>{
+
+  const div=document.createElement("div");
+
+  div.className="historyitem";
+
+  const row=document.createElement("div");
+
+  row.className="row";
+
+  const strong=document.createElement("strong");
+
+  strong.textContent=item.minutes+" minutos concluídos";
+
+  const date=document.createElement("span");
+
+  date.className="pill";
+
+  date.textContent=new Date(item.date+"T12:00:00").toLocaleDateString("pt-BR");
+
+  row.append(strong,date);
+
+  div.append(row);
+
+  box.append(div);
+
+ });
+
+}
+
+function show(id){
+
+ ["home","workout","settings"].forEach(name=>$(name).classList.toggle("hidden",name!==id));
+
+}
+
+function formatTime(seconds){
+
+ return String(Math.floor(seconds/60)).padStart(2,"0")+":"+String(seconds%60).padStart(2,"0");
+
+}
+
+function paint(){
+
+ const e=sequence[index];
+
+ $("exerciseName").textContent=e.name;
+
+ $("tip").textContent=e.tip;
+
+ $("clock").textContent=formatTime(left);
+
+ $("step").textContent="Etapa "+(index+1)+" de "+sequence.length;
+
+ $("next").textContent=index===sequence.length-1?"Concluir":"Próximo";
+
+ $("progress").style.width=Math.min(100,elapsed/total*100)+"%";
+
+}
+
+function stopTimer(){
+
+ if(interval)clearInterval(interval);
+
+ interval=null;
+
+ running=false;
+
+ $("pause").textContent="Continuar";
+
+}
+
+function advance(){
+
+ if(index>=sequence.length-1){finish();return}
+
+ index++;
+
+ left=sequence[index].seconds;
+
+ paint();
+
+}
+
+function tick(){
+
+ if(!running)return;
+
+ left--;
+
+ elapsed++;
+
+ $("clock").textContent=formatTime(left);
+
+ $("progress").style.width=Math.min(100,elapsed/total*100)+"%";
+
+ if(left<=0)advance();
+
+}
+
+function startWorkout(){
+
+ index=0;
+
+ elapsed=0;
+
+ left=sequence[0].seconds;
+
+ running=true;
+
+ show("workout");
+
+ paint();
+
+ $("pause").textContent="Pausar";
+
+ if(interval)clearInterval(interval);
+
+ interval=setInterval(tick,1000);
+
+}
+
+function finish(){
+
+ stopTimer();
+
+ const now=new Date();
+
+ const date=now.getFullYear()+"-"+String(now.getMonth()+1).padStart(2,"0")+"-"+String(now.getDate()).padStart(2,"0");
+
+ const h=getHistory();
+
+ h.push({date,minutes:Math.max(1,Math.round(elapsed/60))});
+
+ localStorage.setItem("tsi_history",JSON.stringify(h));
+
+ renderHistory();
+
+ $("homeProgress").style.width="100%";
+
+ show("home");
+
+ alert("Treino concluído! Parabéns por se movimentar.");
+
+}
+
+$("start").addEventListener("click",startWorkout);
+
+$("settingsButton").addEventListener("click",()=>show("settings"));
+
+$("saveSettings").addEventListener("click",()=>{
+
+ duration=Number($("duration").value);
+
+ localStorage.setItem("tsi_duration",String(duration));
+
+ build();
+
+ $("homeProgress").style.width="0%";
+
+ show("home");
+
+});
+
+$("cancelSettings").addEventListener("click",()=>show("home"));
+
+$("pause").addEventListener("click",()=>{
+
+ running=!running;
+
+ $("pause").textContent=running?"Pausar":"Continuar";
+
+});
+
+$("next").addEventListener("click",advance);
+
+$("end").addEventListener("click",()=>{stopTimer();show("home")});
+
+$("clearHistory").addEventListener("click",()=>{
+
+ if(confirm("Apagar o histórico deste aparelho?")){
+
+  localStorage.removeItem("tsi_history");
+
+  renderHistory();
+
+ }
+
+});
+
+build();
+
+renderHistory();
+
+</script>
+
+</body>
+
+</html>
